@@ -3,25 +3,16 @@ export function Footer() {
     <footer className="footer footer-center p-4 text-base-content">
       <div>
         <p>
-          Created and open-sourced by{" "}
+          Powered by{" "}
           <a
-            href="https://github.com/aeminium-labs/nextjs-solana-starter-kit"
+            href="https://zerolabs.solutions"
             target="_blank"
             rel="noreferrer"
             className="link link-primary"
           >
-            aeminium labs
+           Zero Labs
           </a>
-          . Powered by{" "}
-          <a
-            href="https://helius.xyz/"
-            target="_blank"
-            rel="noreferrer"
-            className="link link-primary"
-          >
-            Helius
-          </a>
-          .
+          
         </p>
       </div>
     </footer>

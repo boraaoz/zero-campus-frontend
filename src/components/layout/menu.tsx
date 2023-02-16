@@ -27,22 +27,6 @@ export function Menu({ twitterHandle, className }: Props) {
               </a>
             </li>
           )}
-          <li>
-            <label
-              htmlFor="bonk-modal"
-              className="btn-ghost lg:btn mb-1 lg:mr-1 lg:mb-0"
-            >
-              Send $Bonk
-            </label>
-          </li>
-          <li>
-            <label
-              htmlFor="sol-modal"
-              className="btn-ghost lg:btn mb-1 lg:mr-1 lg:mb-0"
-            >
-              Send SOL
-            </label>
-          </li>
         </>
       )}
       <WalletMultiButton className="btn" />

@@ -1,8 +1,7 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import React from "react";
 import { fetcher, useDataFetch } from "@utils/use-data-fetch";
-import { ItemList } from "@components/home/item-list";
-import { ItemData } from "@components/home/item";
+
 import { Button, ButtonState } from "@components/home/button";
 import { toast } from "react-hot-toast";
 import { Transaction } from "@solana/web3.js";
@@ -12,9 +11,7 @@ import { SignValidateData } from "@pages/api/sign/validate";
 export function HomeContent() {
   const { publicKey, signTransaction } = useWallet();
   const [signState, setSignState] = React.useState<ButtonState>("initial");
-  const { data, error } = useDataFetch<Array<ItemData>>(
-    publicKey && signState === "success" ? `/api/items/${publicKey}` : null
-  );
+
   const prevPublickKey = React.useRef<string>(publicKey?.toBase58() || "");
 
   // Reset the state if wallet changes or disconnects
@@ -77,55 +74,11 @@ export function HomeContent() {
     setSignState("initial");
   };
 
-  if (error) {
-    return (
-      <p className="text-center p-4">
-        Failed to load items, please try connecting again
-      </p>
-    );
-  }
-
-  if (publicKey && signState === "success" && !data) {
-    return <p className="text-center p-4">Loading wallet information...</p>;
-  }
-
-  const hasFetchedData = publicKey && signState === "success" && data;
 
   return (
     <div className="grid grid-cols-1">
-      {hasFetchedData ? (
-        <div>
-          <ItemList items={data} />
-        </div>
-      ) : (
-        <div className="text-center">
-          {!publicKey && (
-            <div className="card border-2 border-primary mb-5">
-              <div className="card-body items-center">
-                <h2 className="card-title text-center text-primary mb-2">
-                  Please connect your wallet to get a list of your NFTs
-                </h2>
-              </div>
-            </div>
-          )}
-          {publicKey && signState === "error" && (
-            <div className="card border-2 border-primary mb-5">
-              <div className="card-body items-center text-center">
-                <h2 className="card-title text-center mb-2">
-                  Please verify your wallet manually
-                </h2>
-                <Button
-                  state={signState}
-                  onClick={onSignClick}
-                  className="btn-primary"
-                >
-                  Verify wallet
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+
+      
     </div>
   );
 }
