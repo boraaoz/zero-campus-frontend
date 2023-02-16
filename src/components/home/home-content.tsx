@@ -8,6 +8,7 @@ import { Transaction } from "@solana/web3.js";
 import { SignCreateData } from "@pages/api/sign/create";
 import { SignValidateData } from "@pages/api/sign/validate";
 import { useState, useEffect } from "react";
+import Modal from "@components/Modal";
 
 export function HomeContent() {
   const { publicKey, signTransaction } = useWallet();
@@ -74,27 +75,32 @@ export function HomeContent() {
   const onSignClick = () => {
     setSignState("initial");
   };
+  const example = {
+    header: "Header",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id elit velit. Curabitur cursus facilisis vestibulum. Etiam finibus pellentesque luctus. Ut eu facilisis erat, vel ultrices neque. Pellentesque gravida, elit sed ultrices volutpat, metus nisi fermentum nulla, nec congue metus est non enim. Mauris sit amet nunc justo. ",
+  };
 
-  const [boxNumber, setBoxNumber] = useState(["", "", "", "", ""]);
+  const createExample = (example: { header: string; desc: string }) => {
+    setBoxNumber([...boxNumber, example]);
+  };
+  const [boxNumber, setBoxNumber] = useState([example, example, example]);
+  const [show, setModalShow] = useState<boolean>(false);
   return (
     <div className="homepage">
-      <h1 className="text-center text-black pb-8 text-4xl font-bold">Challenges</h1>
+      <h1 className="text-center text-black pb-8 text-4xl font-bold">
+        Challenges
+      </h1>
+      {show && <Modal onSubmit={createExample} setShow={setModalShow} />}
       <div className="mx-auto gap-8 grid grid-cols-3">
         {boxNumber.map((box, index) => {
-          return (
-            <Box
-              header="Header"
-              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id elit velit. Curabitur cursus facilisis vestibulum. Etiam finibus pellentesque luctus. Ut eu facilisis erat, vel ultrices neque. Pellentesque gravida, elit sed ultrices volutpat, metus nisi fermentum nulla, nec congue metus est non enim. Mauris sit amet nunc justo. "
-              key={index}
-            />
-          );
+          return <Box header={box.header} desc={box.desc} key={index} />;
         })}
       </div>
 
       <button
         className="flex mx-auto text-black border px-4 py-2 bg-orange-400 border-black hover:bg-white hover:text-black hover:border-black-300 text-gray-100 rounded-full mt-10"
         onClick={() => {
-          setBoxNumber([...boxNumber, ""]);
+          setModalShow(true);
         }}
       >
         Create Challenge

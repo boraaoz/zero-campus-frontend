@@ -141,7 +141,6 @@ const Home: NextPage = () => {
           />
         </div>
       </DrawerContainer>
-      
     </>
   );
 };
