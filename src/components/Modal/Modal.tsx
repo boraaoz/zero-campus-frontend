@@ -4,7 +4,7 @@ function Modal({
   onSubmit,
   setShow,
 }: {
-  onSubmit: (example: { header: string; desc: string }) => void;
+  onSubmit: (example: { header: string; desc: string; image: string }) => void;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
@@ -23,8 +23,14 @@ function Modal({
             e.preventDefault();
             const header = e.target.header.value;
             const desc = e.target.desc.value;
-            onSubmit({ header, desc });
-            setShow(false);
+            // get image base64
+            const image = e.target.image.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = () => {
+              onSubmit({ header, desc, image: reader.result as string });
+              setShow(false);
+            };
           }}
           className="pb-48 py-12 flex flex-col "
         >
@@ -38,6 +44,8 @@ function Modal({
             name="desc"
             className="bg-white px-1 mb-12  text-black rounded border border-black  outline-none"
           />
+          <h1 className="text-white font-bold text-center">Image</h1>
+          <input name="image" type="file" accept=".png,.jpg" />
           <button className=" text-white bg-black py-2 rounded-full border border-black  hover:bg-white hover:text-black transition ease-in-out duration-300 font-bold">
             Create Challenge
           </button>

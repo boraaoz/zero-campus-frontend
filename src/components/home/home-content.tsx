@@ -79,9 +79,14 @@ export function HomeContent() {
   const example = {
     header: "Header",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id elit velit. Curabitur cursus facilisis vestibulum. Etiam finibus pellentesque luctus. Ut eu facilisis erat, vel ultrices neque. Pellentesque gravida, elit sed ultrices volutpat, metus nisi fermentum nulla, nec congue metus est non enim. Mauris sit amet nunc justo. ",
+    image: "https://picsum.photos/200/300",
   };
 
-  const createExample = (example: { header: string; desc: string }) => {
+  const createExample = (example: {
+    header: string;
+    desc: string;
+    image: string;
+  }) => {
     setBoxNumber([...boxNumber, example]);
   };
   const [boxNumber, setBoxNumber] = useState([example, example, example]);
@@ -96,7 +101,12 @@ export function HomeContent() {
         {boxNumber.map((box, index) => {
           return (
             <Link href={`/challenge/1?header=${box.header}&desc=${box.desc}`}>
-              <Box header={box.header} desc={box.desc} key={index} />
+              <Box
+                image={box.image}
+                header={box.header}
+                desc={box.desc}
+                key={index}
+              />
             </Link>
           );
         })}
