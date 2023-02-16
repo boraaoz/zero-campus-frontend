@@ -78,7 +78,7 @@ export function HomeContent() {
   const [boxNumber, setBoxNumber] = useState(["", "", "", "", ""]);
   return (
     <div className="homepage">
-      <h1 className="text-center pb-8 text-4xl font-bold">Challenges</h1>
+      <h1 className="text-center text-black pb-8 text-4xl font-bold">Challenges</h1>
       <div className="mx-auto gap-8 grid grid-cols-3">
         {boxNumber.map((box, index) => {
           return (
@@ -92,7 +92,7 @@ export function HomeContent() {
       </div>
 
       <button
-        className="flex mx-auto border px-4 py-2 bg-blue-400 border-blue-400 hover:bg-blue-300 hover:border-blue-300 text-gray-100 rounded-lg"
+        className="flex mx-auto text-black border px-4 py-2 bg-orange-400 border-black hover:bg-white hover:text-black hover:border-black-300 text-gray-100 rounded-full mt-10"
         onClick={() => {
           setBoxNumber([...boxNumber, ""]);
         }}

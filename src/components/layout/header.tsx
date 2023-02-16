@@ -7,10 +7,10 @@ type Props = {
 
 export function Header({ twitterHandle }: Props) {
   return (
-    <div className="navbar mb-6 shadow-lg  bg-yellow-700 border border-black text-neutral-content rounded-2xl">
+    <div className="navbar mb-6 shadow-lg  bg-orange-400 border border-black text-neutral-content rounded-2xl">
       <div className="navbar-start">
         <div className="px-2 mx-2">
-          <span className="text-sm md:text-lg font-bold">Zero Campus</span>
+          <span className="text-sm text-black md:text-lg font-bold">Zero Campus</span>
         </div>
       </div>
 

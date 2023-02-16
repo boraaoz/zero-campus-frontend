@@ -127,7 +127,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Zero Campus</title>
       </Head>
-      <DrawerContainer>
+      <DrawerContainer className="bg-secondary">
         <PageContainer>
           <Header twitterHandle={twitterHandle} />
           <HomeContent />
