@@ -1,5 +1,4 @@
 import { Menu } from "@components/layout/menu";
-import { ThemeToggle } from "@components/layout/theme-toggle";
 import React from "react";
 
 type Props = {
@@ -8,12 +7,10 @@ type Props = {
 
 export function Header({ twitterHandle }: Props) {
   return (
-    <div className="navbar mb-6 shadow-lg bg-neutral text-neutral-content rounded-box">
+    <div className="navbar mb-6 shadow-lg  bg-yellow-700 border border-black text-neutral-content rounded-2xl">
       <div className="navbar-start">
         <div className="px-2 mx-2">
-          <span className="text-sm md:text-lg font-bold">
-            Zero Campus
-          </span>
+          <span className="text-sm md:text-lg font-bold">Zero Campus</span>
         </div>
       </div>
 
@@ -24,7 +21,6 @@ export function Header({ twitterHandle }: Props) {
             className="menu-horizontal px-1"
           />
         </div>
-        <ThemeToggle />
         <div className="lg:hidden">
           <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
             <svg

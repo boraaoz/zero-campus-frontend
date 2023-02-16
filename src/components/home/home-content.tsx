@@ -1,14 +1,13 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import React from "react";
 import { fetcher, useDataFetch } from "@utils/use-data-fetch";
-
+import Box from "@components/Box";
 import { Button, ButtonState } from "@components/home/button";
 import { toast } from "react-hot-toast";
 import { Transaction } from "@solana/web3.js";
 import { SignCreateData } from "@pages/api/sign/create";
 import { SignValidateData } from "@pages/api/sign/validate";
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect } from "react";
 
 export function HomeContent() {
   const { publicKey, signTransaction } = useWallet();
@@ -76,13 +75,30 @@ export function HomeContent() {
     setSignState("initial");
   };
 
-
+  const [boxNumber, setBoxNumber] = useState(["", "", "", "", ""]);
   return (
     <div className="homepage">
+      <h1 className="text-center pb-8 text-4xl font-bold">Challenges</h1>
+      <div className="mx-auto gap-8 grid grid-cols-3">
+        {boxNumber.map((box, index) => {
+          return (
+            <Box
+              header="Header"
+              desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id elit velit. Curabitur cursus facilisis vestibulum. Etiam finibus pellentesque luctus. Ut eu facilisis erat, vel ultrices neque. Pellentesque gravida, elit sed ultrices volutpat, metus nisi fermentum nulla, nec congue metus est non enim. Mauris sit amet nunc justo. "
+              key={index}
+            />
+          );
+        })}
+      </div>
 
-</div>
+      <button
+        className="flex mx-auto border px-4 py-2 bg-blue-400 border-blue-400 hover:bg-blue-300 hover:border-blue-300 text-gray-100 rounded-lg"
+        onClick={() => {
+          setBoxNumber([...boxNumber, ""]);
+        }}
+      >
+        Create Challenge
+      </button>
+    </div>
   );
 }
-
-
-
