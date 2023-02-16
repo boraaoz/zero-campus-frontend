@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 import { Transaction } from "@solana/web3.js";
 import { SignCreateData } from "@pages/api/sign/create";
 import { SignValidateData } from "@pages/api/sign/validate";
+import { useState, useEffect } from 'react';
+
 
 export function HomeContent() {
   const { publicKey, signTransaction } = useWallet();
@@ -76,9 +78,11 @@ export function HomeContent() {
 
 
   return (
-    <div className="grid grid-cols-1">
+    <div className="homepage">
 
-      
-    </div>
+</div>
   );
 }
+
+
+
