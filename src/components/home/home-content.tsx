@@ -9,6 +9,7 @@ import { SignCreateData } from "@pages/api/sign/create";
 import { SignValidateData } from "@pages/api/sign/validate";
 import { useState, useEffect } from "react";
 import Modal from "@components/Modal";
+import Link from "next/link";
 
 export function HomeContent() {
   const { publicKey, signTransaction } = useWallet();
@@ -93,7 +94,11 @@ export function HomeContent() {
       {show && <Modal onSubmit={createExample} setShow={setModalShow} />}
       <div className="mx-auto gap-8 grid grid-cols-3">
         {boxNumber.map((box, index) => {
-          return <Box header={box.header} desc={box.desc} key={index} />;
+          return (
+            <Link href={`/challenge/1?header=${box.header}&desc=${box.desc}`}>
+              <Box header={box.header} desc={box.desc} key={index} />
+            </Link>
+          );
         })}
       </div>
 
